@@ -37,19 +37,19 @@ test_code_template = PromptTemplate(
 )
 
 # 2nd Chain
-test_chain = LLMChain(
+test_code_chain = LLMChain(
     prompt=test_code_template,
     llm=llm,
     output_key='test'
 )
 
 chains = SequentialChain(
-    chains=[chat_chain, test_chain],
+    chains=[chat_chain, test_code_chain],
     input_variables=['language', 'task'],
     output_variables=['code', 'test']
 )
 
-result = chat_chain.invoke({
+result = chains.invoke({
     'language': args.language,
     'task': args.task
 })
