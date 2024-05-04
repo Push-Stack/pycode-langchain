@@ -15,6 +15,7 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+# It requires the OPENAI_API_KEY environment variable.
 llm = OpenAI()
 
 # Template
